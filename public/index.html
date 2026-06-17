@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>நம்ம ஊர் Workers</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">🌿 நம்ம ஊர் Workers</div>
+    <div class="nav-right">
+      <a href="#wgrid">Workers</a>
+      <a href="#about">About</a>
+      <button class="nav-reg" onclick="openReg()">Worker Register</button>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Tamil Nadu-ல் நம்பகமான<br>தொழிலாளர்களை கண்டுபிடியுங்கள்</h1>
+    <p>உங்கள் District & தொழில் தேர்ந்தெடுத்து உடனே தொடர்பு கொள்ளுங்கள்</p>
+    <div class="search-wrap">
+      <select id="districtFilter" onchange="renderWorkers()">
+        <option value="">எல்லா மாவட்டமும்</option>
+        <option>அரியலூர்</option>
+        <option>செங்கல்பட்டு</option>
+        <option>சென்னை</option>
+        <option>கோயம்புத்தூர்</option>
+        <option>கடலூர்</option>
+        <option>தர்மபுரி</option>
+        <option>திண்டுக்கல்</option>
+        <option>ஈரோடு</option>
+        <option>கள்ளக்குறிச்சி</option>
+        <option>காஞ்சிபுரம்</option>
+        <option>கன்னியாகுமரி</option>
+        <option>கரூர்</option>
+        <option>கிருஷ்ணகிரி</option>
+        <option>மதுரை</option>
+        <option>மயிலாடுதுறை</option>
+        <option>நாகப்பட்டினம்</option>
+        <option>நாமக்கல்</option>
+        <option>நீலகிரி</option>
+        <option>பெரம்பலூர்</option>
+        <option>புதுக்கோட்டை</option>
+        <option>ராமநாதபுரம்</option>
+        <option>ராணிப்பேட்டை</option>
+        <option>சேலம்</option>
+        <option>சிவகங்கை</option>
+        <option>தென்காசி</option>
+        <option>தஞ்சாவூர்</option>
+        <option>தேனி</option>
+        <option>தூத்துக்குடி</option>
+        <option>திருச்சிராப்பள்ளி</option>
+        <option>திருநெல்வேலி</option>
+        <option>திருப்பத்தூர்</option>
+        <option>திருப்பூர்</option>
+        <option>திருவள்ளூர்</option>
+        <option>திருவண்ணாமலை</option>
+        <option>திருவாரூர்</option>
+        <option>வேலூர்</option>
+        <option>விழுப்புரம்</option>
+        <option>விருதுநகர்</option>
+      </select>
+      <select id="categoryFilter" onchange="renderWorkers()">
+        <option value="">எல்லா தொழிலும்</option>
+        <option>சமையல்காரர்</option>
+        <option>கொத்தனார்</option>
+        <option>டிரைவர்</option>
+        <option>எலக்ட்ரீஷியன்</option>
+        <option>பிளம்பர்</option>
+        <option>பெயிண்டர்</option>
+        <option>பைக் மெக்கானிக்</option>
+        <option>கார் மெக்கானிக்</option>
+        <option>தச்சர்</option>
+        <option>AC மெக்கானிக்</option>
+        <option>தையல்காரர்</option>
+      </select>
+      <button onclick="searchWorkers()">🔍 தேடு</button>
+    </div>
+    <div class="stats">
+      <div><strong id="stat-workers">0</strong><span>Workers</span></div>
+      <div><strong id="stat-districts">0</strong><span>Districts</span></div>
+      <div><strong id="stat-rating">—</strong><span>Avg Rating</span></div>
+      <div><strong>Tamil Nadu</strong><span>Coverage</span></div>
+    </div>
+  </div>
+
+  <div class="main">
+    <p class="sec-title">வகைகள் தேர்ந்தெடு</p>
+    <div class="cats">
+      <div class="cat" onclick="setCat(this,'')">🔍 எல்லாமே</div>
+      <div class="cat" onclick="setCat(this,'சமையல்காரர்')">🍳 சமையல்காரர்</div>
+      <div class="cat" onclick="setCat(this,'கொத்தனார்')">🧱 கொத்தனார்</div>
+      <div class="cat" onclick="setCat(this,'டிரைவர்')">🚗 டிரைவர்</div>
+      <div class="cat" onclick="setCat(this,'எலக்ட்ரீஷியன்')">⚡ எலக்ட்ரீஷியன்</div>
+      <div class="cat" onclick="setCat(this,'பிளம்பர்')">🔧 பிளம்பர்</div>
+      <div class="cat" onclick="setCat(this,'பெயிண்டர்')">🎨 பெயிண்டர்</div>
+      <div class="cat" onclick="setCat(this,'பைக் மெக்கானிக்')">🏍️ பைக் மெக்கானிக்</div>
+      <div class="cat" onclick="setCat(this,'கார் மெக்கானிக்')">🚙 கார் மெக்கானிக்</div>
+      <div class="cat" onclick="setCat(this,'தச்சர்')">🪚 தச்சர்</div>
+      <div class="cat" onclick="setCat(this,'AC மெக்கானிக்')">❄️ AC மெக்கானிக்</div>
+      <div class="cat" onclick="setCat(this,'தையல்காரர்')">👗 தையல்காரர்</div>
+    </div>
+
+    <div class="grid-head">
+      <h2>கிடைக்கும் Workers</h2>
+      <span class="grid-count" id="cnt"></span>
+    </div>
+    <div class="grid" id="wgrid"></div>
+
+    <div class="banner" id="about">
+      <div>
+        <h3>நீங்களும் Worker-ஆ? 👷</h3>
+        <p>இலவசமாக register பண்ணுங்கள் — Customers நேரடியாக தொடர்பு கொள்வார்கள்</p>
+      </div>
+      <button onclick="openReg()">இலவசமாக Register →</button>
+    </div>
+  </div>
+
+  <footer>
+    <strong>நம்ம ஊர் Workers</strong> — Tamil Nadu Local Services Platform<br>
+    📞 8807103657 &nbsp;|&nbsp; ✉ nammaooruworkers@gmail.com
+
+  </footer>
+
+  <!-- REGISTER MODAL -->
+  <div class="ov" id="regMod">
+    <div class="modal">
+      <button class="mclose" onclick="closeM('regMod')">✕</button>
+      <h2>Worker Registration</h2>
+      <div class="fg"><label>பெயர் *</label><input type="text" id="regName" placeholder="உங்கள் பெயர்"></div>
+      <div class="fg"><label>Phone Number *</label><input type="tel" id="regPhone" placeholder="98765 43210"
+          maxlength="10"></div>
+      <div class="fg">
+        <label>4 இலக்க PIN *</label>
+        <input type="password" id="regPin" maxlength="4" placeholder="1234">
+      </div>
+      <div class="fg"><label>District *</label>
+        <select id="regDist">
+          <option value="">-- மாவட்டம் தேர்வு செய்யவும் --</option>
+          <option>அரியலூர்</option>
+          <option>செங்கல்பட்டு</option>
+          <option>சென்னை</option>
+          <option>கோயம்புத்தூர்</option>
+          <option>கடலூர்</option>
+          <option>தர்மபுரி</option>
+          <option>திண்டுக்கல்</option>
+          <option>ஈரோடு</option>
+          <option>கள்ளக்குறிச்சி</option>
+          <option>காஞ்சிபுரம்</option>
+          <option>கன்னியாகுமரி</option>
+          <option>கரூர்</option>
+          <option>கிருஷ்ணகிரி</option>
+          <option>மதுரை</option>
+          <option>மயிலாடுதுறை</option>
+          <option>நாகப்பட்டினம்</option>
+          <option>நாமக்கல்</option>
+          <option>நீலகிரி</option>
+          <option>பெரம்பலூர்</option>
+          <option>புதுக்கோட்டை</option>
+          <option>ராமநாதபுரம்</option>
+          <option>ராணிப்பேட்டை</option>
+          <option>சேலம்</option>
+          <option>சிவகங்கை</option>
+          <option>தென்காசி</option>
+          <option>தஞ்சாவூர்</option>
+          <option>தேனி</option>
+          <option>தூத்துக்குடி</option>
+          <option>திருச்சிராப்பள்ளி</option>
+          <option>திருநெல்வேலி</option>
+          <option>திருப்பத்தூர்</option>
+          <option>திருப்பூர்</option>
+          <option>திருவள்ளூர்</option>
+          <option>திருவண்ணாமலை</option>
+          <option>திருவாரூர்</option>
+          <option>வேலூர்</option>
+          <option>விழுப்புரம்</option>
+          <option>விருதுநகர்</option>
+        </select>
+      </div>
+      <div class="fg"><label>Area / Place</label><input type="text" id="regPlace"
+          placeholder="உதா: RS Puram, Anna Nagar..."></div>
+      <div class="fg"><label>தொழில் *</label>
+        <select id="regWork">
+          <option value="">-- தொழில் தேர்வு செய்யவும் --</option>
+          <option>சமையல்காரர்</option>
+          <option>கொத்தனார்</option>
+          <option>டிரைவர்</option>
+          <option>எலக்ட்ரீஷியன்</option>
+          <option>பிளம்பர்</option>
+          <option>பெயிண்டர்</option>
+          <option>பைக் மெக்கானிக்</option>
+          <option>கார் மெக்கானிக்</option>
+          <option>தச்சர்</option>
+          <option>AC மெக்கானிக்</option>
+          <option>தையல்காரர்</option>
+        </select>
+      </div>
+      <div class="fg"><label>தினசரி கூலி (₹) *</label><input type="number" id="regRate" placeholder="உதா: 800" min="0">
+      </div>
+      <div class="fg"><label>அனுபவம் (ஆண்டுகள்)</label><input type="number" id="regExp" placeholder="உதா: 5" min="0"
+          max="60"></div>
+      <div class="fg"><label>உங்களை பற்றி சொல்லுங்கள்</label><textarea id="regDesc"
+          placeholder="உங்கள் திறமை, சிறப்பு வேலைகள் பற்றி..."></textarea></div>
+      <div class="note">⚠️ தயவு செய்து உங்கள் உண்மையான பெயர், தொலைபேசி எண் மற்றும் வேலை தொடர்பான சரியான தகவல்களை மட்டும் பதிவு செய்யவும்.</div>
+      <div class="mbtns">
+        <button class="mcx" onclick="closeM('regMod')">Cancel</button>
+        <button class="mok" onclick="submitReg()">Register ✓</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ov" id="editMod">
+  <div class="modal">
+    <button class="mclose" onclick="closeEdit()">✕</button>
+    <h2>✏️ விவரங்களை திருத்து</h2>
+
+    <div class="fg">
+      <label>Phone Number</label>
+      <input type="tel" id="editPhone">
+    </div>
+
+    <div class="fg">
+      <label>PIN</label>
+      <input type="password" id="editPin" maxlength="4">
+    </div>
+
+    <button onclick="verifyWorker()">
+      Verify
+    </button>
+
+    <div id="editForm" style="display:none">
+
+      <div class="fg">
+        <label>பெயர்</label>
+        <input type="text" id="editName">
+      </div>
+
+      <div class="fg">
+        <label>ஊர்</label>
+        <input type="text" id="editPlace">
+      </div>
+
+      <div class="fg">
+        <label>தினசரி கூலி</label>
+        <input type="number" id="editRate">
+      </div>
+
+      <div class="fg">
+        <label>அனுபவம்</label>
+        <input type="number" id="editExp">
+      </div>
+
+      <div class="fg">
+        <label>விவரம்</label>
+        <textarea id="editDesc"></textarea>
+      </div>
+
+      <button onclick="updateWorker()">
+        Save Changes
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<button class="feedback-btn"
+        onclick="openFeedback()">
+  💬 Feedback
+</button>
+<div class="ov" id="feedbackModal">
+  <div class="modal">
+
+    <button class="mclose" onclick="closeFeedback()">✕</button>
+
+    <h2>💬 Feedback</h2>
+
+    <input
+      type="text"
+      id="fbName"
+      placeholder="உங்கள் பெயர்">
+
+    <select id="fbRating">
+      <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+      <option value="4">⭐⭐⭐⭐ Good</option>
+      <option value="3">⭐⭐⭐ Average</option>
+      <option value="2">⭐⭐ Poor</option>
+      <option value="1">⭐ Very Poor</option>
+    </select>
+
+    <textarea
+      id="fbMessage"
+      placeholder="உங்கள் கருத்தை எழுதுங்கள்...">
+    </textarea>
+
+    <button onclick="submitFeedback()">
+      Submit Feedback
+    </button>
+
+  </div>
+</div>
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
