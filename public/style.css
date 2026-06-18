@@ -665,6 +665,7 @@ footer strong {
   border-radius: 10px;
   font-size: 14px;
   margin-top: 10px;
+  box-sizing: border-box;
 }
 
 #feedbackModal textarea {
@@ -689,21 +690,20 @@ footer strong {
   opacity: .9;
 }
 
-
 .feedback-btn {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 15px;
+  right: 15px;
   background: #16a34a;
   color: white;
   border: none;
   border-radius: 30px;
-  padding: 12px 20px;
-  font-size: 15px;
+  padding: 12px 18px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  z-index: 9999;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+  z-index: 999;
+  box-shadow: 0 5px 15px rgba(0,0,0,.2);
 }
 
 .feedback-btn:hover {
@@ -711,5 +711,21 @@ footer strong {
 }
 
 .feedback-modal-content {
-  padding-bottom: 70px;
+  padding-bottom: 20px;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .feedback-btn {
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  #feedbackModal .modal {
+    width: 95%;
+    max-width: 95%;
+    padding: 18px;
+  }
 }
