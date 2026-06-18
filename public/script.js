@@ -239,6 +239,7 @@ function openFeedback() {
   document
     .getElementById("feedbackModal")
     .classList.add("open");
+    
 }
 
 function closeFeedback() {
@@ -246,6 +247,8 @@ function closeFeedback() {
     .getElementById("feedbackModal")
     .classList.remove("open");
 }
+
+
 async function verifyWorker() {
 
   const phone = document.getElementById("editPhone").value.trim();
