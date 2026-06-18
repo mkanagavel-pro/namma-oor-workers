@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const connectDB = require("./db");
 const Worker = require("./models/worker");
-const Feedback = require("./models/Feedback");
+const Feedback = require("./models/feedback");
 
 const app = express();
 
@@ -92,6 +92,8 @@ app.post("/api/feedback", async (req, res) => {
 
 
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

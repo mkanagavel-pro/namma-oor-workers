@@ -1,6 +1,13 @@
 {
+  "name": "namma-oor-workers",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "express": "^5.1.0",
-    "mongoose": "^8.0.0"
+    "express": "^5.2.1",
+    "mongodb": "^7.3.0",
+    "mongoose": "^8.24.0"
   }
 }
