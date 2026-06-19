@@ -111,6 +111,20 @@ nav {
     text-align: center;
   }
 }
+@media (max-width: 768px) {
+
+  .logo {
+    font-size: 13px;
+  }
+
+  nav {
+    padding: 0 12px;
+  }
+
+  .menu-btn {
+    font-size: 28px;
+  }
+}
 
 /* HERO */
 .hero {
