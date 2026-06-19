@@ -141,6 +141,21 @@ nav {
 .search-wrap button:hover {
   background: #f59e0b;
 }
+@media (max-width: 768px) {
+  .search-wrap {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-wrap select,
+  .search-wrap button {
+    width: 100%;
+  }
+
+  .search-wrap button {
+    justify-content: center;
+  }
+}
 
 .stats {
   display: flex;
