@@ -89,26 +89,18 @@ nav {
 
 @media (max-width: 768px) {
 
-  .menu-btn {
-    display: block;
-  }
-
   .nav-right {
     display: none;
     width: 100%;
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
+
+    position: static; /* mukkiyam */
   }
 
   .nav-right.show {
     display: flex;
-  }
-
-  .nav-right a,
-  .nav-reg {
-    width: 100%;
-    text-align: center;
   }
 }
 @media (max-width: 768px) {
