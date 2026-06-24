@@ -16,8 +16,8 @@
   <nav>
     <div class="logo">🌿 நம்ம ஊர் Workers</div>
 
-    
-    <div class="nav-right" >
+
+    <div class="nav-right">
       <a href="#wgrid">Workers</a>
       <a href="#about">About</a>
       <button class="nav-reg" onclick="openReg()">Worker Register</button>
@@ -102,9 +102,6 @@
       <div class="cat" onclick="setCat(this,'கொத்தனார்')">🧱 கொத்தனார்</div>
       <div class="cat" onclick="setCat(this,'டிரைவர்')">🚗 டிரைவர்</div>
       <div class="cat" onclick="setCat(this,'பிளம்பர்')">🔧 பிளம்பர்</div>
-      
-      
-      
       <div class="cat" onclick="setCat(this,'பைக் மெக்கானிக்')">🏍️ பைக் மெக்கானிக்</div>
       <div class="cat" onclick="setCat(this,'கார் மெக்கானிக்')">🚙 கார் மெக்கானிக்</div>
       <div class="cat" onclick="setCat(this,'எலக்ட்ரீஷியன்')">⚡ எலக்ட்ரீஷியன்</div>
@@ -213,7 +210,8 @@
           max="60"></div>
       <div class="fg"><label>உங்களை பற்றி சொல்லுங்கள்</label><textarea id="regDesc"
           placeholder="உங்கள் திறமை, சிறப்பு வேலைகள் பற்றி..."></textarea></div>
-      <div class="note">⚠️ தயவு செய்து உங்கள் உண்மையான பெயர், தொலைபேசி எண் மற்றும் வேலை தொடர்பான சரியான தகவல்களை மட்டும் பதிவு செய்யவும்.</div>
+      <div class="note">⚠️ தயவு செய்து உங்கள் உண்மையான பெயர், தொலைபேசி எண் மற்றும் வேலை தொடர்பான சரியான தகவல்களை மட்டும்
+        பதிவு செய்யவும்.</div>
       <div class="mbtns">
         <button class="mcx" onclick="closeM('regMod')">Cancel</button>
         <button class="mok" onclick="submitReg()">Register ✓</button>
@@ -222,94 +220,86 @@
   </div>
 
   <div class="ov" id="editMod">
-  <div class="modal">
-    <button class="mclose" onclick="closeEdit()">✕</button>
-    <h2>✏️ விவரங்களை திருத்து</h2>
+    <div class="modal">
+      <button class="mclose" onclick="closeEdit()">✕</button>
+      <h2>✏️ விவரங்களை திருத்து</h2>
 
-    <div class="fg">
-      <label>Phone Number</label>
-      <input type="tel" id="editPhone">
+      <div class="fg">
+        <label>Phone Number</label>
+        <input type="tel" id="editPhone">
+      </div>
+
+      <div class="fg">
+        <label>PIN</label>
+        <input type="password" id="editPin" maxlength="4">
+      </div>
+
+      <button onclick="verifyWorker()">
+        Verify
+      </button>
+
+      <div id="editForm" style="display:none">
+
+        <div class="fg">
+          <label>பெயர்</label>
+          <input type="text" id="editName">
+        </div>
+
+        <div class="fg">
+          <label>ஊர்</label>
+          <input type="text" id="editPlace">
+        </div>
+
+        <div class="fg">
+          <label>தினசரி கூலி</label>
+          <input type="number" id="editRate">
+        </div>
+
+        <div class="fg">
+          <label>அனுபவம்</label>
+          <input type="number" id="editExp">
+        </div>
+
+        <div class="fg">
+          <label>விவரம்</label>
+          <textarea id="editDesc"></textarea>
+        </div>
+
+        <button onclick="updateWorker()">
+          Save Changes
+        </button>
+
+      </div>
     </div>
+  </div>
 
-    <div class="fg">
-      <label>PIN</label>
-      <input type="password" id="editPin" maxlength="4">
-    </div>
+  <button class="feedback-btn" onclick="openFeedback()">💬</button>
+  <div class="ov" id="feedbackModal">
+    <div class="modal">
 
-    <button onclick="verifyWorker()">
-      Verify
-    </button>
+      <button class="mclose" onclick="closeFeedback()">✕</button>
 
-    <div id="editForm" style="display:none">
+      <h2>💬Feedback</h2>
 
-      <div class="fg">
-        <label>பெயர்</label>
-        <input type="text" id="editName">
-      </div>
+      <input type="text" id="fbName" placeholder="உங்கள் பெயர்">
 
-      <div class="fg">
-        <label>ஊர்</label>
-        <input type="text" id="editPlace">
-      </div>
+      <select id="fbRating">
+        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+        <option value="4">⭐⭐⭐⭐ Good</option>
+        <option value="3">⭐⭐⭐ Average</option>
+        <option value="2">⭐⭐ Poor</option>
+        <option value="1">⭐ Very Poor</option>
+      </select>
 
-      <div class="fg">
-        <label>தினசரி கூலி</label>
-        <input type="number" id="editRate">
-      </div>
+      <textarea id="fbMessage" placeholder="உங்கள் கருத்தை எழுதுங்கள்...">
+    </textarea>
 
-      <div class="fg">
-        <label>அனுபவம்</label>
-        <input type="number" id="editExp">
-      </div>
-
-      <div class="fg">
-        <label>விவரம்</label>
-        <textarea id="editDesc"></textarea>
-      </div>
-
-      <button onclick="updateWorker()">
-        Save Changes
+      <button onclick="submitFeedback()">
+        Submit Feedback
       </button>
 
     </div>
   </div>
-</div>
-
-<button class="feedback-btn"
-        onclick="openFeedback()">
-  💬 Feedback
-</button>
-<div class="ov" id="feedbackModal">
-  <div class="modal">
-
-    <button class="mclose" onclick="closeFeedback()">✕</button>
-
-    <h2>💬</h2>
-
-    <input
-      type="text"
-      id="fbName"
-      placeholder="உங்கள் பெயர்">
-
-    <select id="fbRating">
-      <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
-      <option value="4">⭐⭐⭐⭐ Good</option>
-      <option value="3">⭐⭐⭐ Average</option>
-      <option value="2">⭐⭐ Poor</option>
-      <option value="1">⭐ Very Poor</option>
-    </select>
-
-    <textarea
-      id="fbMessage"
-      placeholder="உங்கள் கருத்தை எழுதுங்கள்...">
-    </textarea>
-
-    <button onclick="submitFeedback()">
-      Submit Feedback
-    </button>
-
-  </div>
-</div>
   <div class="toast" id="toast"></div>
 
   <script src="script.js"></script>
