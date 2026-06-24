@@ -79,44 +79,8 @@ nav {
   background: #0a5240;
 }
 
-.menu-btn {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
 
-@media (max-width: 768px) {
 
-  .nav-right {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-
-    position: static; /* mukkiyam */
-  }
-
-  .nav-right.show {
-    display: flex;
-  }
-}
-@media (max-width: 768px) {
-
-  .logo {
-    font-size: 13px;
-  }
-
-  nav {
-    padding: 0 12px;
-  }
-
-  .menu-btn {
-    font-size: 28px;
-  }
-}
 
 /* HERO */
 .hero {
